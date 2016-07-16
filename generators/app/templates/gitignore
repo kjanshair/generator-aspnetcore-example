@@ -238,11 +238,15 @@ _Pvt_Extensions
 GeneratedArtifacts/
 ModelManifest.xml
 
+# Visual Studio Files
+AspNetCoreExample.sln
+global.json
+**/*.AspNetCoreExample.xproj
+**/*.AspNetCoreExample.xproj.user
+wwwroot/lib
+
 # Paket dependency manager
 .paket/paket.exe
-
-# Bower packages
-/wwwroot/lib/
 
 # FAKE - F# Make
 .fake/

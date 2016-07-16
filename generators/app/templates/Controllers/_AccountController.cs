@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,6 +16,7 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
+		[AllowAnonymous]
         public IActionResult Login()
         {
             return View();
