@@ -42,6 +42,8 @@ module.exports = yeoman.Base.extend({
     this.copy('Views/Home/_Index.cshtml', this.appName + '/Views/Home/Index.cshtml');
     this.copy('Views/Home/_About.cshtml', this.appName + '/Views/Home/About.cshtml');
     this.copy('Views/Home/_Contact.cshtml', this.appName + '/Views/Home/Contact.cshtml');
+    this.copy('Views/Home/_Protected.cshtml', this.appName + '/Views/Home/Protected.cshtml');
+    this.copy('Views/Home/_Error.cshtml', this.appName + '/Views/Home/Error.cshtml');
 
     this.copy('Views/Shared/__Layout.cshtml', this.appName + '/Views/Shared/_Layout.cshtml');
     this.copy('Views/Shared/__LoginPartial.cshtml', this.appName + '/Views/Shared/_LoginPartial.cshtml');
@@ -62,13 +64,12 @@ module.exports = yeoman.Base.extend({
     this.copy('gitattributes', this.appName + '/.gitattributes');
     this.copy('gitignore', this.appName + '/.gitignore');
     this.copy('_bower.json', this.appName + '/bower.json');
-    this.copy('_package.json', this.appName + '/package.json');
+    this.copy('_bundleconfig.json', this.appName + '/bundleconfig.json');
 
     this.copy('_appsettings.json', this.appName + '/appsettings.json');
     this.copy('_Program.cs', this.appName + '/Program.cs');
 
     this.copy('_project.json', this.appName + '/project.json');
-    this.copy('_gulpfile.js', this.appName + '/gulpfile.js');
 
     this.copy('_Startup.cs', this.appName + '/Startup.cs');
     this.copy('_web.config', this.appName + '/web.config');

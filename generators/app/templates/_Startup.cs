@@ -41,6 +41,8 @@ namespace WebApplication1
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
+
             app.UseMvc(routes =>
             {
                 routes.MapRoute(

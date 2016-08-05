@@ -20,13 +20,24 @@ namespace WebApplication1.Controllers
         }
 
         [HttpGet]
-        public ActionResult About()
+        public IActionResult About()
         {
             return View();
         }
 
         [HttpGet]
-        public ActionResult Contact()
+        public IActionResult Contact()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Protected()
+        {
+            return View();
+        }
+
+        public IActionResult Error()
         {
             return View();
         }
