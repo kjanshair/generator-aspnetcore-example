@@ -8,6 +8,10 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Configuration;
+using Microsoft.EntityFrameworkCore;
+using WebApplication1.Models;
+using WebApplication1.Data;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace WebApplication1
 {
@@ -29,6 +33,14 @@ namespace WebApplication1
         
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddEntityFrameworkNpgsql()
+                    .AddDbContext<ApplicationDbContext>(options =>
+                       options.UseNpgsql(Configuration.GetConnectionString("DefaultConnection")));
+
+            services.AddIdentity<ApplicationUser, IdentityRole>()
+                .AddEntityFrameworkStores<ApplicationDbContext>()
+                .AddDefaultTokenProviders();
+
 			services.AddMvc();
         }
 
@@ -40,6 +52,8 @@ namespace WebApplication1
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            app.UseIdentity();
 
             app.UseStatusCodePagesWithReExecute("/Home/Error/{0}");
 

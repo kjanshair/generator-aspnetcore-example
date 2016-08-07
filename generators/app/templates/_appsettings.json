@@ -1,6 +1,6 @@
 {
   "ConnectionStrings": {
-    "DefaultConnection": ""
+    "DefaultConnection": "User ID=postgres;Password=1234;Server=localhost;Port=1234;Database=ApplicationDb;Integrated Security=true;Pooling=true;"
   },
   "Logging": {
     "IncludeScopes": false,
