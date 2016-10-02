@@ -43,7 +43,7 @@ module.exports = yeoman.Base.extend({
     this.copy('Views/Home/_About.cshtml', this.appName + '/Views/Home/About.cshtml');
     this.copy('Views/Home/_Contact.cshtml', this.appName + '/Views/Home/Contact.cshtml');
     this.copy('Views/Home/_Protected.cshtml', this.appName + '/Views/Home/Protected.cshtml');
-    this.copy('Views/Home/_Error.cshtml', this.appName + '/Views/Home/Error.cshtml');
+    this.copy('Views/Shared/_Error.cshtml', this.appName + '/Views/Shared/Error.cshtml');
 
     this.copy('Views/Shared/__Layout.cshtml', this.appName + '/Views/Shared/_Layout.cshtml');
     this.copy('Views/Shared/__LoginPartial.cshtml', this.appName + '/Views/Shared/_LoginPartial.cshtml');
@@ -64,7 +64,6 @@ module.exports = yeoman.Base.extend({
     this.copy('gitattributes', this.appName + '/.gitattributes');
     this.copy('gitignore', this.appName + '/.gitignore');
     this.copy('_bower.json', this.appName + '/bower.json');
-    this.copy('_bundleconfig.json', this.appName + '/bundleconfig.json');
 
     this.copy('_appsettings.json', this.appName + '/appsettings.json');
     this.copy('_Program.cs', this.appName + '/Program.cs');

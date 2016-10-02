@@ -1,6 +1,6 @@
 {
   "name": "generator-aspnetcore-example",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "A sample ASP.NET Core 1.0 application for my blogs at http://kjanshair.azurewebsites.net/",
   "homepage": "",
   "author": {

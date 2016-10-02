@@ -1,45 +1,21 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 
-namespace WebApplication1.Controllers
+namespace AspNetCoreExample.Controllers
 {
     public class HomeController : Controller
     {
-        public HomeController()
-        {
+        public IActionResult Index() => View();
 
-        }
+        public IActionResult About() => View();
 
-        [HttpGet]
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Contact() => View();
 
-        [HttpGet]
-        public IActionResult About()
-        {
-            return View();
-        }
+        public IActionResult Error() => View();
 
-        [HttpGet]
-        public IActionResult Contact()
-        {
-            return View();
-        }
-
-        [HttpGet]
-        public IActionResult Protected()
-        {
-            return View();
-        }
-
-        public IActionResult Error()
-        {
-            return View();
-        }
+        public IActionResult Protected() => View();
     }
 }

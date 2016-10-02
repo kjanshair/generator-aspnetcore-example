@@ -1,88 +1,51 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Authorization;
-using WebApplication1.Models.AccountViewModels;
-using WebApplication1.Models;
+using AspNetCoreExample.Models.AccountViewModels;
 using Microsoft.AspNetCore.Identity;
+using AspNetCoreExample.Models;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
-namespace WebApplication1.Controllers
+namespace AspNetCoreExample.Controllers
 {
     public class AccountController : Controller
     {
+        private UserManager<ApplicationUser> _userManager;
         private RoleManager<IdentityRole> _roleManager;
         private SignInManager<ApplicationUser> _signInManager;
-        private UserManager<ApplicationUser> _userManager;
 
-        public AccountController(UserManager<ApplicationUser> userManager,
-                                 RoleManager<IdentityRole> roleManager,
-                                 SignInManager<ApplicationUser> signInManager)
+        public AccountController(UserManager<ApplicationUser> userManager, 
+                                RoleManager<IdentityRole> roleManager,
+                                SignInManager<ApplicationUser> signInManager)
         {
             _userManager = userManager;
             _roleManager = roleManager;
             _signInManager = signInManager;
-
         }
 
-        [HttpGet]
-		[AllowAnonymous]
-        public IActionResult Login(string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            return View();
-        }
-
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Login(LoginViewModel model, string returnUrl = null)
-        {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                ModelState.AddModelError("", $"User {model.Email} does not exist!");
-                return View();
-            }
-            else
-            {
-                return View();
-            }
-        }
-
-        [HttpGet]
-        [AllowAnonymous]
         public IActionResult Register()
         {
             return View();
         }
 
         [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Register(RegisterViewModel model, string returnUrl = null)
+        public IActionResult Register(RegisterViewModel model)
         {
-            ViewData["ReturnUrl"] = returnUrl;
-            if (ModelState.IsValid)
-            {
-                ModelState.AddModelError("", $"User {model.Email} already exist!");
-                return View();
-            }
-            else
-            {
-                return View();
-            }
+            return View();
         }
 
-        // [HttpPost]
-        // [ValidateAntiForgeryToken]
-        // public async Task<IActionResult> LogOff()
-        // {
-        //     await _signInManager.SignOutAsync();
-        //     return RedirectToAction(nameof(HomeController.Index), "Home");
-        // }
+        public IActionResult Login()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Login(LoginViewModel model)
+        {
+            return View();
+        }
 
         private void AddErrors(IdentityResult result)
         {
@@ -90,6 +53,11 @@ namespace WebApplication1.Controllers
             {
                 ModelState.AddModelError(string.Empty, error.Description);
             }
+        }
+
+        private Task<ApplicationUser> GetCurrentUserAsync()
+        {
+            return _userManager.GetUserAsync(HttpContext.User);
         }
 
         private IActionResult RedirectToLocal(string returnUrl)
